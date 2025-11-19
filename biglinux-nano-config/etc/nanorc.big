@@ -1,0 +1,56 @@
+## Nano with BigLinux theme
+## BigLinux elegant configuration
+
+## Behavior settings
+set autoindent
+set constantshow
+set historylog
+set minibar
+set positionlog
+set tabsize 2
+set tabstospaces
+set unix
+
+## Show a custom help line at the bottom
+unset nohelp
+set multibuffer
+
+##  Biglinux theme colors - improved contrast
+set titlecolor brightwhite,blue
+set statuscolor brightwhite,blue
+set errorcolor brightwhite,red
+set selectedcolor black,brightcyan
+set stripecolor ,blue
+set numbercolor brightcyan
+set keycolor brightcyan
+set functioncolor brightblue
+
+## Better contrast for text
+set constantshow
+#set linenumbers
+set indicator
+
+## Syntax highlighting
+include "/usr/share/nano/*.nanorc"
+
+## Language-specific extensions
+extendsyntax python tabgives "     "
+extendsyntax makefile tabgives "	"
+
+## More intuitive keyboard shortcuts
+bind ^Q exit all
+bind ^F whereis all
+bind ^L findnext all
+bind F3 findnext all
+bind ^C copy main
+bind ^V paste all
+bind ^Y cut all
+bind ^G gotoline main
+bind ^/ comment main
+
+## Help system - F1 opens help screen
+bind F1 help all
+
+## Shortcut to insert shell function
+bind ^F "function shell_function_name()" all
+bind ^D "^[Oc^[[1;6D^T|sed 's/^[ \t]*//'" main

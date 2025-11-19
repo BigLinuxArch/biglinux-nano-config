@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = nano
+Target = biglinux-nano-config
+
+[Action]
+Description = Restoring custom nano configuration...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/custom-nanorc

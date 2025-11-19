@@ -1,0 +1,37 @@
+# Maintainer: Tales A. Mendonça <talesam@gmail.com>
+
+pkgname=biglinux-nano-config
+pkgver=$(date +%y.%m.%d)
+pkgrel=$(date +%H%M)
+pkgdesc="Custom nano configuration"
+arch=('any')
+url="https://github.com/biglinux/$pkgname"
+license=('GPL3')
+depends=('nano' 'nano-syntax-highlighting' )
+provides=("$pkgname")
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+package() {
+    cd "${srcdir}/${pkgname}"
+
+    # Determine the correct source directory
+    if [ -d "${pkgname}" ]; then
+        srcdir="${srcdir}/${pkgname}/${pkgname}"
+    else
+        srcdir="${srcdir}/${pkgname}"
+    fi
+
+    # Install files
+    local dirs=("usr" "etc" "opt")
+    for dir in "${dirs[@]}"; do
+        if [ -d "${srcdir}/${dir}" ]; then
+            cp -a "${srcdir}/${dir}" "${pkgdir}/"
+        fi
+    done
+
+    # Install documentation if present
+    if [ -f "README.md" ]; then
+        install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    fi
+}
