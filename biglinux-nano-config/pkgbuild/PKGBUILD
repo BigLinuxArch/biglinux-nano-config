@@ -1,15 +1,15 @@
 # Maintainer: Tales A. Mendonça <talesam@gmail.com>
 
 pkgname=biglinux-nano-config
-pkgver=$(date +%y.%m.%d)
-pkgrel=$(date +%H%M)
+pkgver=25.03.21
+pkgrel=0025
 pkgdesc="Custom nano configuration"
 arch=('any')
 url="https://github.com/biglinux/$pkgname"
 license=('GPL3')
 depends=('nano' 'nano-syntax-highlighting' )
 provides=("$pkgname")
-source=("git+${url}.git")
+source=("git+${url}.git#branch=stable-2025-03-20_21-23")
 sha256sums=('SKIP')
 
 package() {
